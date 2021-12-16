@@ -1,21 +1,60 @@
 import time
+import tkinter
+import tkinter.messagebox
 from pynput import keyboard
 from tkinter import *
+# from PyQt5.QtWidgets import QApplication, QWidget
 import ctypes
 
-root=Tk()
-root.title('ZTJ')
+root = Tk()
+
+
+def submit(tinker):
+    host_name=host_input.get()
+    guest_name=guest_input.get()
+    if host_name=='' or guest_name=='':
+        okqqq()
+        return
+    host_input.grid_forget()
+    guest_input.grid_forget()
+    host_label.grid_forget()
+    guest_label.grid_forget()
+    submit.grid_forget()
+    create_match(host_name,)
+
+def create_match(host_name,guest_name):
+    host_name
+
+def okqqq():
+    # 弹出对话框
+    result = tkinter.messagebox.askokcancel(title='提示框', message='请填写比赛队队名！')
+    print(result)
+
+
+root.title('篮球赛计时软件')
 screenwidth=root.winfo_screenwidth()
 screenheight=root.winfo_screenheight()
 w=screenwidth
 h=screenheight
 x=0
 y=0
+host_label=Label(root,text="主队名称：")
+host_label.grid(row=0)
+host_input=Entry(root)
+host_input.grid(row=0,column=1)
+guest_label=Label(root,text="客队名称：")
+guest_label.grid(row=1)
+guest_input=Entry(root)
+guest_input.grid(row=1,column=1)
+submit = Button(root, text=u"确定", command=submit)
+submit.grid(row=2)
 root.geometry("%dx%d+%d+%d"%(w,h,x,y))
-root.configure(bg='gray')
+root.configure(bg='black')
 root.overrideredirect(True)
 # root.attributes('-topmost', True)
+
 root.mainloop()
+
 quarte = 1
 q_time = 10
 b_time = 240
